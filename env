@@ -45,9 +45,9 @@
 # database.default.DBPrefix =
 
 # database.tests.hostname = localhost
-# database.tests.database = ci4
-# database.tests.username = root
-# database.tests.password = root
+database.tests.database = laporan_keuangan_development
+database.tests.username = udin
+database.tests.password = udin
 # database.tests.DBDriver = MySQLi
 # database.tests.DBPrefix =
 
