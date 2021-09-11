@@ -15,22 +15,23 @@
         <a href="/reports" class="btn btn-info">Kembali</a>
     </div>
     <div class="mt-4">
-        <form action="/reports/create" method="POST">
+        <form action="<?= base_url('/reports/create') ?>" method="post">
+            <?= csrf_field() ?>
             <div class="">
                 <label for="cash" class="form-label">Kas</label>
-                <input type="number" class="form-control" id="cash" aria-describedby="emailHelp">
+                <input type="number" class="form-control" id="cash" value="12" />
             </div>
             <div class="mt-3">
                 <label for="debit" class="form-label">Uang Masuk (Debit)</label>
-                <input type="number" class="form-control" id="debit">
+                <input type="number" class="form-control" id="debit" value="132" />
             </div>
             <div class="mt-3">
                 <label for="kredit" class="form-label">Uang Keluar (Kredit)</label>
-                <input type="number" class="form-control" id="kredit">
+                <input type="number" class="form-control" id="kredit" value="142" />
             </div>
             <div class="mt-3">
                 <label for="detail" class="form-label">Keterangan</label>
-                <input class="form-control" id="detail">
+                <input class="form-control" id="detail" value="asfsdf" />
             </div>
             <button type="submit" class="mt-4 btn btn-primary">Tambah Laporan</button>
         </form>
@@ -38,3 +39,6 @@
 </body>
 
 </html>
+iuhiuh
+kuhkuh
+iuhiuh
