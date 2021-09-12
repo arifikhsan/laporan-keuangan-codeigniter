@@ -8,6 +8,11 @@ class Reports extends BaseController
 {
     public function index()
     {
+        $catalouge = [
+            'title' => 'Product Catalog',
+            'brand' => 'Smartphone Xiaomi',
+            'product' => ['Redmi Note 9', 'Redmi Note 9 Pro', 'Mi Note 10', 'Mi Note 10 Pro']
+        ];
         $reports = $this->report->get()->getResult();
         return view('reports/index', ['reports' => $reports]);
     }
@@ -29,9 +34,9 @@ class Reports extends BaseController
         $result = $this->report->insert($report);
         if ($result) {
             session()->setFlashdata('message', 'Laporan berhasil ditambahkan!');
-          } else {
+        } else {
             session()->setFlashdata('message', 'Laporan gagal dibuat!');
-          }
+        }
         return redirect()->to('reports/new');
     }
 }
