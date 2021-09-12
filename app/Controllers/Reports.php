@@ -8,18 +8,14 @@ class Reports extends BaseController
 {
     public function index()
     {
-        $catalouge = [
-            'title' => 'Product Catalog',
-            'brand' => 'Smartphone Xiaomi',
-            'product' => ['Redmi Note 9', 'Redmi Note 9 Pro', 'Mi Note 10', 'Mi Note 10 Pro']
-        ];
         $reports = $this->report->get()->getResult();
         return view('reports/index', ['reports' => $reports]);
     }
 
     public function new()
     {
-        return view('reports/new');
+        $lastReport = $this->report->orderBy('datetime', 'DESC')->limit(1)->get()->getRowObject();
+        return view('reports/new', ['report' => $lastReport]);
     }
 
     public function create()
@@ -29,7 +25,7 @@ class Reports extends BaseController
             'debit' => intval($this->request->getPost('debit')),
             'credit' => intval($this->request->getPost('credit')),
             'detail' => $this->request->getPost('detail'),
-            'date' => date('Y-m-d H:i:s'),
+            'datetime' => date('Y-m-d H:i:s', now()),
         ];
         $result = $this->report->insert($report);
         if ($result) {
