@@ -20,12 +20,19 @@ class Reports extends BaseController
 
     public function create()
     {
+        $cash = intval($this->request->getPost('cash'));
+        $debit = intval($this->request->getPost('debit'));
+        $credit = intval($this->request->getPost('credit'));
+
+        // dd($cash);
+
         $report = [
-            'cash' => intval($this->request->getPost('cash')),
-            'debit' => intval($this->request->getPost('debit')),
-            'credit' => intval($this->request->getPost('credit')),
+            'cash' => $cash,
+            'debit' => $debit,
+            'credit' => $credit,
             'detail' => $this->request->getPost('detail'),
             'datetime' => date('Y-m-d H:i:s', now()),
+            'balance' => $cash + $debit - $credit,
         ];
         $result = $this->report->insert($report);
         if ($result) {
@@ -36,12 +43,14 @@ class Reports extends BaseController
         return redirect()->to('reports/new');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $report = $this->report->where('id', $id)->get()->getRowObject();
         return view('reports/delete', ['report' => $report]);
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $result = $this->report->delete($id);
         if ($result) {
             session()->setFlashdata('message', 'Laporan berhasil dihapus!');
