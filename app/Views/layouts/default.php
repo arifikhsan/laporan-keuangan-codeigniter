@@ -9,7 +9,7 @@
     <title>Laporan Keuangan</title>
 </head>
 
-<body class="p-4">
+<body class="container mt-4">
     <?php $this->renderSection('content') ?>
 </body>
 

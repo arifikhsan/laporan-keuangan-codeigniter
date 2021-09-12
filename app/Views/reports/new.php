@@ -23,15 +23,15 @@
         </div>
         <div class="mt-3">
             <label for="debit" class="form-label">Uang Masuk (Debit)</label>
-            <input type="number" class="form-control" id="debit" name="debit" value="132" />
+            <input type="number" class="form-control" id="debit" name="debit" value="0" />
         </div>
         <div class="mt-3">
             <label for="kredit" class="form-label">Uang Keluar (Kredit)</label>
-            <input type="number" class="form-control" id="credit" name="credit" value="142" />
+            <input type="number" class="form-control" id="credit" name="credit" value="0" />
         </div>
         <div class="mt-3">
             <label for="detail" class="form-label">Keterangan</label>
-            <input class="form-control" id="detail" name="detail" value="asfsdf" />
+            <input class="form-control" id="detail" name="detail" value="" />
         </div>
         <button type="submit" class="mt-4 btn btn-primary">Tambah Laporan</button>
     </form>
