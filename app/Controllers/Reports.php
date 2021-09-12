@@ -35,4 +35,19 @@ class Reports extends BaseController
         }
         return redirect()->to('reports/new');
     }
+
+    public function delete($id) {
+        $report = $this->report->where('id', $id)->get()->getRowObject();
+        return view('reports/delete', ['report' => $report]);
+    }
+
+    public function destroy($id) {
+        $result = $this->report->delete($id);
+        if ($result) {
+            session()->setFlashdata('message', 'Laporan berhasil dihapus!');
+        } else {
+            session()->setFlashdata('message', 'Laporan gagal dihapus!');
+        }
+        return redirect()->to('reports');
+    }
 }
