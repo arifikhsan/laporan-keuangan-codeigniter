@@ -8,7 +8,8 @@ class Reports extends BaseController
 {
     public function index()
     {
-        return view('reports/index');
+        $reports = $this->report->get()->getResult();
+        return view('reports/index', ['reports' => $reports]);
     }
 
     public function new()
@@ -18,15 +19,19 @@ class Reports extends BaseController
 
     public function create()
     {
-        // $this->load->helper('input');
-        // $report = [
-        //     'cash' => $this->input->post('cash'),
-        //     'debit' => $this->input->post('debit'),
-        //     'credit' => $this->input->post('credit'),
-        //     'detail' => $this->input->post('detail'),
-        //     'date' => date('Y-m-d H:i:s'),
-        // ];
-        var_dump($this->input->post());
-        // return redirect('reports/new');
+        $report = [
+            'cash' => intval($this->request->getPost('cash')),
+            'debit' => intval($this->request->getPost('debit')),
+            'credit' => intval($this->request->getPost('credit')),
+            'detail' => $this->request->getPost('detail'),
+            'date' => date('Y-m-d H:i:s'),
+        ];
+        $result = $this->report->insert($report);
+        if ($result) {
+            session()->setFlashdata('message', 'Laporan berhasil ditambahkan!');
+          } else {
+            session()->setFlashdata('message', 'Laporan gagal dibuat!');
+          }
+        return redirect()->to('reports/new');
     }
 }

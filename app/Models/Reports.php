@@ -14,7 +14,7 @@ class Reports extends Model
     protected $returnType           = 'array';
     protected $useSoftDeletes       = false;
     protected $protectFields        = true;
-    protected $allowedFields        = [];
+    protected $allowedFields        = ['cash', 'credit', 'debit', 'detail'];
 
     // Dates
     protected $useTimestamps        = false;

@@ -15,23 +15,29 @@
         <a href="/reports" class="btn btn-info">Kembali</a>
     </div>
     <div class="mt-4">
+        <?php if (session()->getFlashdata('message')) : ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= session()->getFlashdata('message'); ?>
+                <button type="button" class="btn btn-danger" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+        <?php endif; ?>
         <form action="<?= base_url('/reports/create') ?>" method="post">
             <?= csrf_field() ?>
             <div class="">
                 <label for="cash" class="form-label">Kas</label>
-                <input type="number" class="form-control" id="cash" value="12" />
+                <input type="number" class="form-control" id="cash" name="cash" value="12" />
             </div>
             <div class="mt-3">
                 <label for="debit" class="form-label">Uang Masuk (Debit)</label>
-                <input type="number" class="form-control" id="debit" value="132" />
+                <input type="number" class="form-control" id="debit" name="debit" value="132" />
             </div>
             <div class="mt-3">
                 <label for="kredit" class="form-label">Uang Keluar (Kredit)</label>
-                <input type="number" class="form-control" id="kredit" value="142" />
+                <input type="number" class="form-control" id="credit" name="credit" value="142" />
             </div>
             <div class="mt-3">
                 <label for="detail" class="form-label">Keterangan</label>
-                <input class="form-control" id="detail" value="asfsdf" />
+                <input class="form-control" id="detail" name="detail" value="asfsdf" />
             </div>
             <button type="submit" class="mt-4 btn btn-primary">Tambah Laporan</button>
         </form>
@@ -39,6 +45,3 @@
 </body>
 
 </html>
-iuhiuh
-kuhkuh
-iuhiuh
