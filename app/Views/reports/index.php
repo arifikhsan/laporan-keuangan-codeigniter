@@ -15,16 +15,18 @@
         <th scope="col">Debit</th>
         <th scope="col">Keterangan</th>
         <th scope="col">Saldo</th>
+        <th scope="col">Aksi</th>
     </tr>
     <?php foreach ($reports as $index => $report) : ?>
         <tr>
             <td><?= $index + 1 ?></td>
             <td><?= $report->cash ?></td>
-            <td><?= $report->datetime ?></td>
+            <td><?= date('d M Y', strtotime($report->datetime)) ?></td>
             <td><?= $report->credit ?></td>
             <td><?= $report->debit ?></td>
             <td><?= $report->detail ?></td>
             <td><?= $report->balance ?></td>
+            <td><a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a></td>
         </tr>
     <?php endforeach; ?>
 </table>
