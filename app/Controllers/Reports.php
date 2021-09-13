@@ -24,8 +24,6 @@ class Reports extends BaseController
         $debit = intval($this->request->getPost('debit'));
         $credit = intval($this->request->getPost('credit'));
 
-        // dd($cash);
-
         $report = [
             'cash' => $cash,
             'debit' => $debit,
@@ -56,6 +54,38 @@ class Reports extends BaseController
             session()->setFlashdata('message', 'Laporan berhasil dihapus!');
         } else {
             session()->setFlashdata('message', 'Laporan gagal dihapus!');
+        }
+        return redirect()->to('reports');
+    }
+
+    public function edit($id)
+    {
+        $report = $this->report->where('id', $id)->get()->getRowObject();
+        return view('reports/edit', ['report' => $report]);
+    }
+
+    public function update($id)
+    {
+        $cash = intval($this->request->getPost('cash'));
+        $debit = intval($this->request->getPost('debit'));
+        $credit = intval($this->request->getPost('credit'));
+        $datetime = intval($this->request->getPost('datetime'));
+
+        $report = [
+            'cash' => $cash,
+            'debit' => $debit,
+            'credit' => $credit,
+            'detail' => $this->request->getPost('detail'),
+            'datetime' => $datetime,
+            'balance' => $cash + $debit - $credit,
+        ];
+        $result = $this->report->update($report);
+
+        // $result = $this->report->where($id)->;
+        if ($result) {
+            session()->setFlashdata('message', 'Laporan berhasil diubah!');
+        } else {
+            session()->setFlashdata('message', 'Laporan gagal diubah!');
         }
         return redirect()->to('reports');
     }

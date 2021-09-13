@@ -32,7 +32,10 @@
             <td><?= $report->debit ?></td>
             <td><?= $report->detail ?></td>
             <td><?= $report->balance ?></td>
-            <td><a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a></td>
+            <td>
+                <a href="/reports/edit/<?= $report->id ?>" class="link-primary">Edit</a>
+                <a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a>
+            </td>
         </tr>
     <?php endforeach; ?>
 </table>
