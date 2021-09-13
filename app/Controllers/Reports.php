@@ -66,10 +66,11 @@ class Reports extends BaseController
 
     public function update($id)
     {
+        // dd($this->request->getRawInput());
         $cash = intval($this->request->getPost('cash'));
         $debit = intval($this->request->getPost('debit'));
         $credit = intval($this->request->getPost('credit'));
-        $datetime = intval($this->request->getPost('datetime'));
+        $datetime = $this->request->getPost('datetime');
 
         $report = [
             'cash' => $cash,
@@ -79,9 +80,9 @@ class Reports extends BaseController
             'datetime' => $datetime,
             'balance' => $cash + $debit - $credit,
         ];
-        $result = $this->report->update($report);
 
-        // $result = $this->report->where($id)->;
+        $result = $this->report->update($id, $report);
+
         if ($result) {
             session()->setFlashdata('message', 'Laporan berhasil diubah!');
         } else {
