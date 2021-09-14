@@ -15,11 +15,8 @@
     <form action="/reports/update/<?= $report->id ?>" method="post">
         <?= csrf_field() ?>
         <div class="">
-            <label for="cash" class="form-label">Kas / Saldo</label>
-            <input type="number" class="form-control" id="cash" name="cash" value="<?= $report ? $report->balance : 0 ?>" <?= $report ? 'disabled' : '' ?> />
-            <? if ($report) : ?>
-                <input type="hidden" name="cash" value="<?= $report->balance ?>" />
-            <? endif ?>
+            <label for="cash" class="form-label">Kas</label>
+            <input type="number" class="form-control" id="cash" name="cash" value="<?= $report->cash ?>" disabled />
         </div>
         <div class="mt-3">
             <label for="debit" class="form-label">Uang Masuk (Debit)</label>
@@ -36,6 +33,10 @@
         <div class="mt-3">
             <label for="datetime" class="form-label">Tanggal dan waktu</label>
             <input type="datetime-local" class="form-control" id="datetime" name="datetime" value="<?= date('Y-m-d\TH:i:s', strtotime($report->datetime)) ?>" />
+        </div>
+        <div class="mt-3">
+            <label for="balance" class="form-label">Saldo</label>
+            <input type="number" class="form-control" id="balance" name="balance" value="<?= $report->balance ?>" disabled />
         </div>
         <button type="submit" class="mt-4 btn btn-primary">Update Laporan</button>
     </form>

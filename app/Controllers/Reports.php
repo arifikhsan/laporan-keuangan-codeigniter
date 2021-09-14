@@ -6,6 +6,12 @@ use App\Controllers\BaseController;
 
 class Reports extends BaseController
 {
+    public function __construct()
+    {
+        $config['DSN'] = 'MySQLi://b206b289c6d0b8:90524e0c@us-cdbr-east-04.cleardb.com/heroku_4347a3dc6a09ce8?reconnect=true';
+        $db = \Config\Database::connect($config);
+    }
+
     public function index()
     {
         $reports = $this->report->get()->getResult();
@@ -67,18 +73,15 @@ class Reports extends BaseController
     public function update($id)
     {
         // dd($this->request->getRawInput());
-        $cash = intval($this->request->getPost('cash'));
         $debit = intval($this->request->getPost('debit'));
         $credit = intval($this->request->getPost('credit'));
         $datetime = $this->request->getPost('datetime');
 
         $report = [
-            'cash' => $cash,
             'debit' => $debit,
             'credit' => $credit,
             'detail' => $this->request->getPost('detail'),
             'datetime' => $datetime,
-            'balance' => $cash + $debit - $credit,
         ];
 
         $result = $this->report->update($id, $report);
