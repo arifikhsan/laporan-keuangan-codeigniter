@@ -23,6 +23,11 @@
         <th scope="col">Saldo</th>
         <th scope="col">Aksi</th>
     </tr>
+    <?php if (count($reports) <= 0) : ?>
+        <tr>
+            <td colspan="8" class="text-center">Tidak ada laporan</td>
+        </tr>
+    <?php endif; ?>
     <?php foreach ($reports as $index => $report) : ?>
         <tr>
             <td><?= $index + 1 ?></td>
@@ -33,7 +38,8 @@
             <td><?= $report->detail ?></td>
             <td><?= $report->balance ?></td>
             <td>
-                <a href="/reports/edit/<?= $report->id ?>" class="link-primary">Edit</a>
+                <a href="/reports/show/<?= $report->id ?>" class="link-primary">Lihat</a>
+                <a href="/reports/edit/<?= $report->id ?>" class="link-info">Edit</a>
                 <a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a>
             </td>
         </tr>
