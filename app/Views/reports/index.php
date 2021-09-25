@@ -23,8 +23,8 @@
         <th scope="col">No</th>
         <th scope="col">Kas</th>
         <th scope="col">Tanggal</th>
-        <th scope="col">Kredit</th>
         <th scope="col">Debit</th>
+        <th scope="col">Kredit</th>
         <th scope="col">Keterangan</th>
         <th scope="col">Saldo</th>
         <th scope="col">Aksi</th>
@@ -39,8 +39,8 @@
             <td><?= $index + 1 ?></td>
             <td><?= $report->cash ?></td>
             <td><?= date('d M Y', strtotime($report->datetime)) ?></td>
-            <td><?= $report->credit ?></td>
             <td><?= $report->debit ?></td>
+            <td><?= $report->credit ?></td>
             <td><?= $report->detail ?></td>
             <td><?= $report->balance ?></td>
             <td>
