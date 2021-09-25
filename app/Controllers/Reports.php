@@ -6,16 +6,16 @@ use App\Controllers\BaseController;
 
 class Reports extends BaseController
 {
-    public function __construct()
-    {
-        $config['DSN'] = 'MySQLi://b206b289c6d0b8:90524e0c@us-cdbr-east-04.cleardb.com/heroku_4347a3dc6a09ce8?reconnect=true';
-        $db = \Config\Database::connect($config);
-    }
-
     public function index()
     {
         $reports = $this->report->get()->getResult();
         return view('reports/index', ['reports' => $reports]);
+    }
+
+    public function show($id)
+    {
+        $report = $this->report->where('id', $id)->get()->getRowObject();
+        return view('reports/show', ['report' => $report]);
     }
 
     public function new()
@@ -29,15 +29,18 @@ class Reports extends BaseController
         $cash = intval($this->request->getPost('cash'));
         $debit = intval($this->request->getPost('debit'));
         $credit = intval($this->request->getPost('credit'));
+        $detail = $this->request->getPost('detail');
+        $balance = $cash + $debit - $credit;
 
         $report = [
             'cash' => $cash,
             'debit' => $debit,
             'credit' => $credit,
-            'detail' => $this->request->getPost('detail'),
+            'detail' => $detail,
             'datetime' => date('Y-m-d H:i:s', now()),
-            'balance' => $cash + $debit - $credit,
+            'balance' => $balance,
         ];
+
         $result = $this->report->insert($report);
         if ($result) {
             session()->setFlashdata('message', 'Laporan berhasil ditambahkan!');
