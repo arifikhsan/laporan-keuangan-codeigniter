@@ -45,7 +45,9 @@
             <td><?= $report->balance ?></td>
             <td>
                 <a href="/reports/show/<?= $report->id ?>" class="link-primary">Lihat</a>
-                <a href="/reports/edit/<?= $report->id ?>" class="link-info">Edit</a>
+                <?php if (count($reports) == $index + 1) : ?>
+                    <a href="/reports/edit/<?= $report->id ?>" class="link-info">Edit</a>
+                <?php endif; ?>
                 <a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a>
             </td>
         </tr>
