@@ -17,6 +17,7 @@
         <div class="">
             <label for="cash" class="form-label">Kas</label>
             <input type="number" class="form-control" id="cash" name="cash" value="<?= $report->cash ?>" disabled />
+            <input type="hidden" name="cash" value="<?= $report->cash ?>" />
         </div>
         <div class="mt-3">
             <label for="debit" class="form-label">Uang Masuk (Debit)</label>

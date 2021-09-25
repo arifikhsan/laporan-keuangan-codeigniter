@@ -75,14 +75,18 @@ class Reports extends BaseController
 
     public function update($id)
     {
-        // dd($this->request->getRawInput());
+        $datetime = $this->request->getPost('datetime');
+        $previousReport = $this->report->where('datetime <', $datetime)->orderBy('datetime', 'desc')->limit(1)->get()->getResultObject()[0];
+        $cash = intval($previousReport->balance);
         $debit = intval($this->request->getPost('debit'));
         $credit = intval($this->request->getPost('credit'));
-        $datetime = $this->request->getPost('datetime');
+        $balance = $cash + $debit - $credit;
 
         $report = [
+            'cash' => $cash,
             'debit' => $debit,
             'credit' => $credit,
+            'balance' => $balance,
             'detail' => $this->request->getPost('detail'),
             'datetime' => $datetime,
         ];
