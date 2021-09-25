@@ -47,8 +47,8 @@
                 <a href="/reports/show/<?= $report->id ?>" class="link-primary">Lihat</a>
                 <?php if (count($reports) == $index + 1) : ?>
                     <a href="/reports/edit/<?= $report->id ?>" class="link-info">Edit</a>
+                    <a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a>
                 <?php endif; ?>
-                <a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a>
             </td>
         </tr>
     <?php endforeach; ?>
