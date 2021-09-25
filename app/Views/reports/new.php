@@ -12,11 +12,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php endif; ?>
-    <form action="<?= base_url('/reports/create') ?>" method="post">
+    <form action="/reports/create" method="post">
         <?= csrf_field() ?>
         <div class="">
-            <label for="cash" class="form-label">Kas / Saldo</label>
-            <input type="number" class="form-control" id="cash" name="cash" value="<?= $report ? $report->balance : 0 ?>" <?= $report ? 'disabled' : '' ?> />
+            <label for="cash" class="form-label">Kas</label>
+            <input type="number" class="form-control" id="cash" name="cash" value="<?= $report ? $report->balance : 0 ?>" disabled />
             <? if ($report) : ?>
                 <input type="hidden" name="cash" value="<?= $report->balance ?>" />
             <? endif ?>

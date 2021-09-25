@@ -3,12 +3,16 @@
 <?= $this->section('content') ?>
 <div class="d-flex justify-content-between align-items-center align-self-center">
     <h1>Hapus Laporan?</h1>
-    <a href="/reports" class="btn btn-info">Kembali</a>
+    <a href="/reports" class="btn btn-secondary">Kembali</a>
 </div>
 <table class="table table-stripped mt-4">
     <tr>
         <th>Id</th>
         <td><?= $report->id ?></td>
+    </tr>
+    <tr>
+        <th>Kas</th>
+        <td><?= $report->cash ?></td>
     </tr>
     <tr>
         <th>Debit</th>
@@ -17,6 +21,10 @@
     <tr>
         <th>Kredit</th>
         <td><?= $report->credit ?></td>
+    </tr>
+    <tr>
+        <th>Saldo</th>
+        <td><?= $report->balance ?></td>
     </tr>
     <tr>
         <th>Keterangan</th>
