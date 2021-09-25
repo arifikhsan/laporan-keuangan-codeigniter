@@ -70,7 +70,13 @@ class Reports extends BaseController
     public function edit($id)
     {
         $report = $this->report->where('id', $id)->get()->getRowObject();
-        return view('reports/edit', ['report' => $report]);
+        $isLast = $this->report->orderBy('id', 'desc')->limit(1)->get()->getRowObject()->id;
+        if (intval($report->id) >= intval($isLast)) {
+            return view('reports/edit', ['report' => $report]);
+        } else {
+            session()->setFlashdata('error', 'Tidak bisa mengubah laporan yang ditengah :D');
+            return redirect()->to('reports');
+        }
     }
 
     public function update($id)

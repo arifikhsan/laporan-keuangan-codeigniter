@@ -39,4 +39,9 @@ class Reports extends Model
     protected $afterFind            = [];
     protected $beforeDelete         = [];
     protected $afterDelete          = [];
+
+    // public function isLast() {
+    //     $isLast = $this->report->orderBy('id', 'desc')->limit(1)->get()->getRowObject()->id;
+    //     return intval($this->report->id) >= intval($isLast);
+    // }
 }
