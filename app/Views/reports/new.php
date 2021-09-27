@@ -17,9 +17,9 @@
         <div class="">
             <label for="cash" class="form-label">Kas</label>
             <input type="number" class="form-control" id="cash" name="cash" value="<?= $report ? $report->balance : 0 ?>" disabled />
-            <? if ($report) : ?>
+            <?php if ($report) : ?>
                 <input type="hidden" name="cash" value="<?= $report->balance ?>" />
-            <? endif ?>
+            <?php endif ?>
         </div>
         <div class="mt-3">
             <label for="debit" class="form-label">Uang Masuk (Debit)</label>

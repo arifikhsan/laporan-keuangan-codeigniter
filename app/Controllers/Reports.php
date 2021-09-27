@@ -37,7 +37,7 @@ class Reports extends BaseController
             'debit' => $debit,
             'credit' => $credit,
             'detail' => $detail,
-            'datetime' => date('Y-m-d H:i:s', now()),
+            'datetime' => date('Y-m-d H:i:s', now()), // tanggal dan waktu
             'balance' => $balance,
         ];
 
