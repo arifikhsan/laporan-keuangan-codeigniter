@@ -47,7 +47,7 @@ class Reports extends BaseController
         } else {
             session()->setFlashdata('message', 'Laporan gagal dibuat!');
         }
-        return redirect()->to('reports/new');
+        return redirect()->to('reports');
     }
 
     public function delete($id)
