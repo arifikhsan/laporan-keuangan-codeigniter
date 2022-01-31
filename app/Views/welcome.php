@@ -244,7 +244,11 @@
 				<li class="menu-toggle">
 					<button onclick="toggleMenu();">&#9776;</button>
 				</li>
-				<li class="menu-item hidden"><a href="#">Login</a></li>
+				<?php if ($auth && $auth->check()) : ?>
+					<li class="menu-item hidden"><a href="/logout">Logout</a></li>
+				<?php else : ?>
+					<li class="menu-item hidden"><a href="/login">Login</a></li>
+				<?php endif; ?>
 				</li>
 			</ul>
 		</div>

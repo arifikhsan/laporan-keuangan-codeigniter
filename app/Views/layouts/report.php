@@ -16,8 +16,8 @@
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/reports" class="nav-link active" aria-current="page">Laporan Utama</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Keluar</a></li>
+            <li class="nav-item"><a href="/reports" class="nav-link active" aria-current="page">Daftar Keluar Masuk</a></li>
+            <li class="nav-item"><a href="/logout" class="nav-link">Keluar</a></li>
         </ul>
     </header>
 
