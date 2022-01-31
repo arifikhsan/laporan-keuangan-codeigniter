@@ -8,7 +8,7 @@ class Reports extends BaseController
 {
     public function index()
     {
-        $reports = $this->report->get()->getResult();
+        $reports = $this->report->orderBy('datetime', 'desc')->get()->getResult();
         return view('reports/index', ['reports' => $reports]);
     }
 

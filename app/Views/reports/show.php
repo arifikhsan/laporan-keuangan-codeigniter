@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/default') ?>
+<?= $this->extend('layouts/report') ?>
 
 <?= $this->section('content') ?>
 <div class="d-flex justify-content-between align-items-center align-self-center">

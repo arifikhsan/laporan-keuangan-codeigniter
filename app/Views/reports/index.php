@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/default') ?>
+<?= $this->extend('layouts/report') ?>
 
 <?= $this->section('content') ?>
 <h1>Laporan Keuangan</h1>
@@ -38,14 +38,14 @@
         <tr>
             <td><?= $index + 1 ?></td>
             <td><?= $report->cash ?></td>
-            <td><?= date('d M Y', strtotime($report->datetime)) ?></td>
+            <td><?= date('d M Y - H:i:s', strtotime($report->datetime)) ?></td>
             <td><?= $report->debit ?></td>
             <td><?= $report->credit ?></td>
             <td><?= $report->detail ?></td>
             <td><?= $report->balance ?></td>
             <td>
                 <a href="/reports/show/<?= $report->id ?>" class="link-primary">Lihat</a>
-                <?php if (count($reports) == $index + 1) : ?>
+                <?php if ($index == 0) : ?>
                     <a href="/reports/edit/<?= $report->id ?>" class="link-info">Edit</a>
                     <a href="/reports/delete/<?= $report->id ?>" class="link-danger">Hapus</a>
                 <?php endif; ?>

@@ -32,10 +32,10 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => '127.0.0.1',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'database_name',
+        'hostname' => 'localhost',
+        'username' => 'udin',
+        'password' => 'udin',
+        'database' => 'laporan_keuangan_codeigniter_development',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
@@ -76,20 +76,13 @@ class Database extends Config
         'port'     => 3306,
     ];
 
-    public $production = [
-        'DSN'      => '',
-    ];
-
     public function __construct()
     {
-        parent::__construct();
-
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
         }
-        // $this->defaultGroup = ENVIRONMENT;
     }
 }
